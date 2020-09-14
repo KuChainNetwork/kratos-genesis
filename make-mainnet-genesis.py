@@ -23,11 +23,12 @@ keyInit1 = 'kratos1kh9tvl7qdhqkm2lq5xvclj0y2nxlzu3dvazh6z'
 keyInit2 = 'kratos1flvs32r3074k3cm3guj6rhnyade0mh8cyzw652'
 keyInit3 = 'kratos1q4ku5v7jgs8f6khj7pg33sdrw5cl3tyq5y8pmd'
 
-conAddress = 'kratos1tkklqkveyx8hgmgna4wnz60f9jn7fe49dh76dm'
-conPubkey = '03dcea6425fbdf9ccc3d1a267d58ecc8b013d53097bd9d74a58c92393f1f69045d'
 
 # auths for test
 auths = {}
+pubkeys = {}
+conpubkeys = {}
+keyHexs = {}
 
 # node info for test
 nodes = {}
@@ -59,8 +60,10 @@ def run_output(args):
 
    return out_bytes.decode('utf-8')
 
-def cli(cmd):
+def cli(cmd, noKey = None):
    cliParams = "--home %s/cli/ --keyring-backend test" % (args.home)
+   if noKey is not None:
+      cliParams = "--home %s/cli/ " % (args.home)
    return run_output('%s/%s %s %s' % (args.build_path, cliCmd, cliParams, cmd))
 
 def cliByHome(home, cmd):
@@ -94,14 +97,26 @@ def initWallet():
    logging.debug("init wallet")
 
    run('rm -rf %s/cli' % (args.home))
-   genAuth(mainChainSymbol)
    return
 
 def genAuth(name):
-   cli('keys add ' + name)
-   valAuth = cli('keys show %s -a' % (name))
-   valAuth = valAuth[:-1]
+   addInfoJSON = cli('keys add ' + name)
+   infos = addInfoJSON.splitlines()
+   pubkey = infos[3].split(':')[1][1:]
+
+   valAuth = cli('keys show %s -a' % (name))[:-1]
+   keyHex = cli('parse --chain-id %s %s' % (chainID, pubkey), True)[:-1]
+   keyHex = keyHex.splitlines()[1].split(':')[1][1:]
+
+   keysInfos = cli('parse --chain-id %s %s' % (chainID, keyHex), True)
+
+   conpubkey = keysInfos.splitlines()[6][2:]
+
    auths[name] = valAuth
+   pubkeys[name] = pubkey
+   conpubkeys[name] = conpubkey
+   keyHexs[name] = keyHex
+
    return valAuth
 
 def getAuth(name):
@@ -160,7 +175,7 @@ def initChain(nodeNum):
    return
 
 def genTx():
-   nodeByCli(mainChainSymbol, 'gentx %s %s --name %s --pubkey %s ' % (mainChainSymbol, keyInit1, mainChainSymbol, conPubkey))
+   nodeByCli(mainChainSymbol, 'gentx %s %s --name %s ' % (mainChainSymbol, keyInit1, mainChainSymbol))
    node(mainChainSymbol, 'collect-gentxs')
 
 def message(msg, *args):
@@ -174,6 +189,7 @@ parser.add_argument('--home', metavar='', help='testnet data home path', default
 parser.add_argument('--trace', action='store_true', help='if --trace to kucd')
 parser.add_argument('--log-level', metavar='', help='log level for kucd', default='*:info')
 parser.add_argument('--node-num', type=int, metavar='', help='val node number', default=12)
+parser.add_argument('--gen-auths', type=bool, metavar='', help='if use gen new auth for test', default=False)
 
 args = parser.parse_args()
 logging.debug("args %s", args)
@@ -184,10 +200,14 @@ logging.info("start kuchain testnet by %s to %s", args.home, args.build_path)
 run('rm -rf %s/' % (args.home))
 
 initWallet()
+
+if args.gen_auths:
+   keyInit1 = genAuth(mainChainSymbol)
+   keyInit2 = genAuth('a2')
+   keyInit3 = genAuth('a3')
+
 initChain(int(args.node_num))
 
 # rm tmp files
-run('rm -rf %s/cli' % (args.home))
-run('mv  %s/nodes/kratos/config/genesis.json %s/' % (args.home, args.home))
-run('mv  %s/nodes/kratos/config/gentx %s/' % (args.home, args.home))
-run('rm -rf %s/nodes' % (args.home))
+run('cp  %s/nodes/kratos/config/genesis.json %s/' % (args.home, args.home))
+run('cp -r %s/nodes/kratos/config/gentx %s/' % (args.home, args.home))
