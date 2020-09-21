@@ -6,10 +6,10 @@ Genesis for kratos.
 
 | Index |       Name        |                  AuthAddress                  |   Assets    |        Note         |
 | ----- | ----------------- | --------------------------------------------- | ----------- | ------------------- |
-| 1     | -                 | kratos1kh9tvl7qdhqkm2lq5xvclj0y2nxlzu3dvazh6z | 5           | chain boot Fee      |
-| 2     | kratos            | kratos1kh9tvl7qdhqkm2lq5xvclj0y2nxlzu3dvazh6z | 5           | kratos root account |
-| 3     | initial@kratos    | kratos1flvs32r3074k3cm3guj6rhnyade0mh8cyzw652 | 100,000,000 | initial tokens      |
-| 4     | foundation@kratos | kratos1q4ku5v7jgs8f6khj7pg33sdrw5cl3tyq5y8pmd | 40,000,000  | foundation tokens   |
+| 1     | -                 | kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn | 25          | chain boot Fee      |
+| 2     | kratos            | kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn | 25          | kratos root account |
+| 3     | initial@kratos    | kratos1ul7zrgzwwf90j7lxrla09hhcr456j5yae5xkml | 100,000,000 | initial tokens      |
+| 4     | foundation@kratos | kratos1v7mv73v0d4gac54pn22ja6qptuxp3u8flls09h | 40,000,000  | foundation tokens   |
 
 ## Chain Defines
 
@@ -50,7 +50,7 @@ it will gen this file to genesis:
     └── gentx-xxxxxxxxxxxxxx.json
 ```
 
-the `gentx-xxxxxxxxxxxxxx.json` need sign by `kratos1kh9tvl7qdhqkm2lq5xvclj0y2nxlzu3dvazh6z` (or the key in `kratos` if gen new keys)
+the `gentx-xxxxxxxxxxxxxx.json` need sign by `kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn` (or the key in `kratos` if gen new keys)
 
 then set into genesis.json signatures info.
 

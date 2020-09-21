@@ -126,20 +126,20 @@ def getNodeName(num):
    return "validator%d" % (num)
 
 def initGenesis(nodeNum):
-   # 1 kratos kratos1kh9tvl7qdhqkm2lq5xvclj0y2nxlzu3dvazh6z 0
+   # 1 kratos kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn 0
    node(mainChainSymbol, 'genesis add-account %s %s' % ('kratos', keyInit1))
    node(mainChainSymbol, 'genesis add-coin %s \"%s\"' % (coreCoin(0), "core token for kratos chain"))
    node(mainChainSymbol, 'genesis add-account-coin %s %s' % ('kratos', coreCoin(25 * coinBase)))
    
-   # 2 kratos1kh9tvl7qdhqkm2lq5xvclj0y2nxlzu3dvazh6z 50
+   # 2 kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn 50
    node(mainChainSymbol, 'genesis add-address %s' % (keyInit1))
    node(mainChainSymbol, 'genesis add-account-coin %s %s' % (keyInit1, coreCoin(25 * coinBase)))
 
-   # 3 initial@kratos kratos1flvs32r3074k3cm3guj6rhnyade0mh8cyzw652
+   # 3 initial@kratos kratos1ul7zrgzwwf90j7lxrla09hhcr456j5yae5xkml
    node(mainChainSymbol, 'genesis add-account %s %s' % ('initial@kratos', keyInit2))
    node(mainChainSymbol, 'genesis add-account-coin %s %s' % ('initial@kratos', coreCoin(100000000 * coinBase)))
    
-   # 4 foundation@kratos kratos1q4ku5v7jgs8f6khj7pg33sdrw5cl3tyq5y8pmd
+   # 4 foundation@kratos kratos1v7mv73v0d4gac54pn22ja6qptuxp3u8flls09h
    node(mainChainSymbol, 'genesis add-account %s %s' % ('foundation@kratos', keyInit3))
    node(mainChainSymbol, 'genesis add-account-coin %s %s' % ('foundation@kratos', coreCoin(40000000 * coinBase)))
 
