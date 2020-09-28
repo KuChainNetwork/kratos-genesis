@@ -15,3 +15,7 @@
 # vendor/
 
 /mainnet/
+/scripts/bin
+/scripts/log
+/scripts/node
+/scripts/kratos.tar.gz
