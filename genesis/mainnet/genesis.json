@@ -1,0 +1,312 @@
+{
+  "genesis_time": "2020-09-22T03:59:02.606513054Z",
+  "chain_id": "kratos",
+  "consensus_params": {
+    "block": {
+      "max_bytes": "22020096",
+      "max_gas": "-1",
+      "time_iota_ms": "1000"
+    },
+    "evidence": {
+      "max_age_num_blocks": "100000",
+      "max_age_duration": "172800000000000"
+    },
+    "validator": {
+      "pub_key_types": [
+        "ed25519"
+      ]
+    }
+  },
+  "app_hash": "",
+  "app_state": {
+    "account": {
+      "accounts": [
+        {
+          "type": "kuchain/Account",
+          "value": {
+            "id": "kratos",
+            "account_number": "1",
+            "auths": [
+              {
+                "name": "root",
+                "address": "kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn"
+              }
+            ]
+          }
+        },
+        {
+          "type": "kuchain/Account",
+          "value": {
+            "id": "kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn",
+            "account_number": "2",
+            "auths": null
+          }
+        },
+        {
+          "type": "kuchain/Account",
+          "value": {
+            "id": "initial@kratos",
+            "account_number": "3",
+            "auths": [
+              {
+                "name": "root",
+                "address": "kratos1ul7zrgzwwf90j7lxrla09hhcr456j5yae5xkml"
+              }
+            ]
+          }
+        },
+        {
+          "type": "kuchain/Account",
+          "value": {
+            "id": "foundation@kratos",
+            "account_number": "4",
+            "auths": [
+              {
+                "name": "root",
+                "address": "kratos1v7mv73v0d4gac54pn22ja6qptuxp3u8flls09h"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "kuslashing": {
+      "params": {
+        "signed_blocks_window": "100",
+        "min_signed_per_window": "0.500000000000000000",
+        "downtime_jail_duration": "600000000000",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.000100000000000000"
+      },
+      "signing_infos": {},
+      "missed_blocks": {}
+    },
+    "kudistribution": {
+      "params": {
+        "community_tax": "0.020000000000000000",
+        "base_proposer_reward": "0.010000000000000000",
+        "bonus_proposer_reward": "0.040000000000000000",
+        "withdraw_addr_enabled": true
+      },
+      "fee_pool": {
+        "community_pool": []
+      },
+      "delegator_withdraw_infos": [],
+      "previous_proposer": "",
+      "outstanding_rewards": [],
+      "validator_accumulated_commissions": [],
+      "validator_historical_rewards": [],
+      "validator_current_rewards": [],
+      "delegator_starting_infos": [],
+      "validator_slash_events": []
+    },
+    "kuparams": null,
+    "mint": {
+      "minter": {
+        "inflation": "0.140000000000000000",
+        "annual_provisions": "0.000000000000000000"
+      },
+      "params": {
+        "mint_denom": "kratos/kts",
+        "inflation_rate_change": "0.140000000000000000",
+        "inflation_max": "0.210000000000000000",
+        "inflation_min": "0.080000000000000000",
+        "goal_bonded": "0.670000000000000000",
+        "blocks_per_year": "10519200"
+      }
+    },
+    "plugin": {
+      "type": "plugin/genesisState",
+      "value": {}
+    },
+    "kugov": {
+      "starting_proposal_id": "1",
+      "deposits": null,
+      "votes": null,
+      "proposals": null,
+      "deposit_params": {
+        "min_deposit": [
+          {
+            "denom": "kratos/kts",
+            "amount": "500000000000000000000"
+          }
+        ],
+        "max_deposit_period": "1209600000000000"
+      },
+      "voting_params": {
+        "voting_period": "1209600000000000"
+      },
+      "tally_params": {
+        "quorum": "0.334000000000000000",
+        "threshold": "0.500000000000000000",
+        "veto": "0.334000000000000000",
+        "emergency": "0.667000000000000000",
+        "max_punish_period": "604800000000000",
+        "slash_fraction": "0.000100000000000000"
+      }
+    },
+    "kustaking": {
+      "params": {
+        "unbonding_time": "1209600000000000",
+        "max_validators": 33,
+        "max_entries": 7,
+        "bond_denom": "kratos/kts"
+      },
+      "last_total_power": "0",
+      "last_validator_powers": null,
+      "validators": null,
+      "delegations": null,
+      "unbonding_delegations": null,
+      "redelegations": null,
+      "exported": false
+    },
+    "genutil": {
+      "gentxs": [
+        {
+          "type": "kuchain/Tx",
+          "value": {
+            "msg": [
+              {
+                "type": "kuchain/KuMsgCreateValidator",
+                "value": {
+                  "KuMsg": {
+                    "auth": [
+                      "kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn"
+                    ],
+                    "from": "",
+                    "to": "",
+                    "amount": [],
+                    "router": "kustaking",
+                    "action": "create@staking",
+                    "data": "pQH3Pbq/CggKBmtyYXRvcxISMTAwMDAwMDAwMDAwMDAwMDAwGhMKEQEBBi0gVD0wAAAAAAAAAAAAIhcKFQI3embUMf/fhDo/fyQ+w4IsbTzjuSpTa3JhdG9zdmFsY29uc3B1YjF6Y2pkdWVwcXR3ZDdxeGxzNWhyZXZ3cXl6bmZ2cWZkeW1ja3VobXB4czAwanY5NGp6OGZwZjBuenRsa3M5cnJkOWQ="
+                  }
+                }
+              },
+              {
+                "type": "kuchain/KuMsgDelegate",
+                "value": {
+                  "KuMsg": {
+                    "auth": [
+                      "kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn"
+                    ],
+                    "from": "kratos",
+                    "to": "kustaking",
+                    "amount": [
+                      {
+                        "denom": "kratos/kts",
+                        "amount": "1000000000000000000"
+                      }
+                    ],
+                    "router": "kustaking",
+                    "action": "delegate",
+                    "data": "Ue+AYjUKEwoRAQEGLSBUPTAAAAAAAAAAAAASEwoRAQEGLSBUPTAAAAAAAAAAAAAaIQoKa3JhdG9zL2t0cxITMTAwMDAwMDAwMDAwMDAwMDAwMA=="
+                  }
+                }
+              }
+            ],
+            "fee": {
+              "amount": [
+                {
+                  "denom": "kratos/kts",
+                  "amount": "2000"
+                }
+              ],
+              "gas": "200000",
+              "payer": "kratos"
+            },
+            "signatures": [
+            {
+                "signature": "Fk6bthBrC4yWLoFZ2ovYPmzwg6Xn2UAa3OVi1SXlWShs4rqzch6otN2idTdSHrpIRWyJKipIwVYyUMY+NKGY1w==",
+                "pub_key":
+                {
+                    "type": "tendermint/PubKeySecp256k1",
+                    "value": "A98TihpltVwFkC/KFNM8ZGpsgnGyW7ML4WUehSKikmGN"
+                }
+            }
+        ],
+            "memo": "035ec954c47f0b40c02491fc9abd4ce398bfec70@172.26.37.14:26656"
+          }
+        }
+      ]
+    },
+    "asset": {
+      "type": "asset/genesisState",
+      "value": {
+        "genesisAssets": [
+          {
+            "type": "asset/genesisAsset",
+            "value": {
+              "id": "kratos",
+              "coins": [
+                {
+                  "denom": "kratos/kts",
+                  "amount": "25000000000000000000"
+                }
+              ]
+            }
+          },
+          {
+            "type": "asset/genesisAsset",
+            "value": {
+              "id": "kratos1xaaxd4p3ll0cgw3l0ujrasuz93knecaet9x9rn",
+              "coins": [
+                {
+                  "denom": "kratos/kts",
+                  "amount": "25000000000000000000"
+                }
+              ]
+            }
+          },
+          {
+            "type": "asset/genesisAsset",
+            "value": {
+              "id": "initial@kratos",
+              "coins": [
+                {
+                  "denom": "kratos/kts",
+                  "amount": "100000000000000000000000000"
+                }
+              ]
+            }
+          },
+          {
+            "type": "asset/genesisAsset",
+            "value": {
+              "id": "foundation@kratos",
+              "coins": [
+                {
+                  "denom": "kratos/kts",
+                  "amount": "40000000000000000000000000"
+                }
+              ]
+            }
+          }
+        ],
+        "genesisCoins": [
+          {
+            "type": "asset/genesisCoin",
+            "value": {
+              "creator": "kratos",
+              "symbol": "kts",
+              "maxSupply": {
+                "denom": "kratos/kts",
+                "amount": "0"
+              },
+              "description": "core token for kratos chain"
+            }
+          }
+        ]
+      }
+    },
+    "supply": {
+      "supply": []
+    },
+    "kuevidence": {
+      "params": {
+        "max_evidence_age": "120000000000",
+        "double_sign_jail_duration": "1209600000000000"
+      },
+      "evidence": []
+    }
+  }
+}
