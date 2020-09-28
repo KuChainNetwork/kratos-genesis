@@ -57,3 +57,6 @@ if [ $OS == "linux" ]; then
     nohup ${ROOTPATH}/bin/kucd_${OSSTRING} start --home ${ROOTPATH}/node >> ${ROOTPATH}/log/node.log 2>&1 &
 fi
 
+if [ $OS == "darwin" ]; then
+    nohup ${ROOTPATH}/bin/kucd_${OSSTRING} start --home ${ROOTPATH}/node >> ${ROOTPATH}/log/node.log 2>&1 &
+fi
